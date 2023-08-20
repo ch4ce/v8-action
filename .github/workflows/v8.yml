@@ -15,8 +15,8 @@ on:
 env:
   PATCH_FLAG: false
   COMMIT: 0
-  DEPOT_UPLOAD: true
-  SRC_UPLOAD: true
+  DEPOT_UPLOAD: false
+  SRC_UPLOAD: false
   BINARY_UPLOAD: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -70,6 +70,7 @@ jobs:
         
     # 7zip v8 src
     - name: 7zip v8_src
+      if: env.SRC_UPLOAD == 'true' && !cancelled()
       run: |
         zip -q -r v8.zip v8
         7z a v8.7z ./v8.zip -v2048m
@@ -78,7 +79,7 @@ jobs:
     - name: compile v8
       run: |
         v8/tools/dev/v8gen.py x64.release
-        ninja -C v8/out.gn/x64.release d8
+        ninja -j 30 -C v8/out.gn/x64.release d8
         ls
         ls v8
         ls v8/out.gn

@@ -44,15 +44,13 @@ jobs:
         echo export PATH=\"\$PATH:`pwd`/ninja/\" >> ~/.bash_profile
         source ~/.bash_profile
     
-    # test ninja - source ~/.bash_profile只在当前命令集下生效
+    # test ninja - source ~/.bash_profile只在当前命令集下生效，每个步骤都会在单独的 shell 中运行，所以环境变量的更改不会在其他步骤中保持生效。
     - name: test ninja
       run: |
         source ~/.bash_profile
         echo $PATH
         cat ~/.bash_profile
-        ninja
         
-
     # get depot_tools
     - name: depot_tools
       run: |
@@ -65,7 +63,6 @@ jobs:
         source ~/.bash_profile
         echo $PATH
         cat ~/.bash_profile
-        ninja
     
     # fetch v8 source code
     - name: fetch v8

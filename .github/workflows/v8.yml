@@ -101,6 +101,7 @@ jobs:
     # 编译v8
     - name: compile v8
       run: |
+        source ~/.bash_profile
         cd v8
         tools/dev/v8gen.py x64.release
         ninja -j 30 -C out.gn/x64.release d8

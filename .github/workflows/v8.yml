@@ -67,6 +67,7 @@ jobs:
     # fetch v8 source code
     - name: fetch v8
       run: |
+        source ~/.bash_profile
         fetch v8
         cd v8
     

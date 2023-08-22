@@ -44,9 +44,10 @@ jobs:
         echo export PATH=\"\$PATH:`pwd`/ninja/\" >> ~/.bash_profile
         source ~/.bash_profile
     
-    # test ninja
+    # test ninja - source ~/.bash_profile只在当前命令集下生效
     - name: test ninja
       run: |
+        source ~/.bash_profile
         echo $PATH
         cat ~/.bash_profile
         ninja
@@ -57,11 +58,11 @@ jobs:
       run: |
         git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
         echo export PATH=\"\$PATH:`pwd`/depot_tools/\" >> ~/.bash_profile
-        source ~/.bash_profile
 
-    # test ninja
+    # test ninja - source ~/.bash_profile只在当前命令集下生效
     - name: test ninja
       run: |
+        source ~/.bash_profile
         echo $PATH
         cat ~/.bash_profile
         ninja

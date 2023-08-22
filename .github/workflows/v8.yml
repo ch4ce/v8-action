@@ -46,7 +46,7 @@ jobs:
     # test ninja
     - name: test ninja
       run: |
-        bash
+        source ~/.bash_profile
         ninja
 
     # get depot_tools

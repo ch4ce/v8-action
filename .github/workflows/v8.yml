@@ -49,11 +49,17 @@ jobs:
       run: |
         git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
         echo export PATH=\"\$PATH:`pwd`/depot_tools/\" >> ~/.bash_profile
+        source ~/.bash_profile
+
+    # test ninja
+    - name: test ninja
+      run: |
+        cat ~/.bash_profile
+        ninja
     
     # fetch v8 source code
     - name: fetch v8
       run: |
-        source ~/.bash_profile
         fetch v8
         cd v8
     

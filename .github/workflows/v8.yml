@@ -46,7 +46,6 @@ jobs:
     # test ninja
     - name: test ninja
       run: |
-        ninja
         bash
         ninja
 

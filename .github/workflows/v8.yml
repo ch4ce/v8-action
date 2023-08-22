@@ -43,6 +43,13 @@ jobs:
         cd ninja && ./configure.py --bootstrap && cd ..
         echo export PATH=\"\$PATH:`pwd`/ninja/\" >> ~/.bash_profile
 
+    # test ninja
+    - name: test ninja
+      run: |
+        ninja
+        bash
+        ninja
+
     # get depot_tools
     - name: depot_tools
       run: |

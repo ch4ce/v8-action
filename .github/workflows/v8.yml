@@ -35,7 +35,14 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get -y install pkg-config git subversion curl wget build-essential python xz-utils zip p7zip-full
-    
+
+    # get ninja
+    - name: install ninja
+      run: |
+        git clone https://github.com/ninja-build/ninja.git
+        cd ninja && ./configure.py --bootstrap && cd ..
+        echo export PATH=\"\$PATH:`pwd`/ninja/\" >> ~/.bash_profile
+
     # get depot_tools
     - name: depot_tools
       run: |
@@ -74,6 +81,7 @@ jobs:
       run: |
         zip -q -r v8.zip v8
         7z a v8.7z ./v8.zip -v2048m
+
 
     # 编译v8
     - name: compile v8

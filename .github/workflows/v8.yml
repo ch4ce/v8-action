@@ -111,11 +111,9 @@ jobs:
     - name: upload v8_compiled
       if: env.BINARY_UPLOAD == 'true' && !cancelled()
       run: |
-        zip -q -r out.gn.zip out.gn
-        zip -q -r out.zip out
+        zip -q -r out.gn.zip v8/out.gn
         curl -fsSL git.io/file-transfer | sh
         ./transfer gg out.gn.zip
-        ./transfer gg out.zip
     
     # upload depot_tools.zip to cowtransfer
     - name: upload depot_tools

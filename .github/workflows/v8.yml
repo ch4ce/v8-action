@@ -103,7 +103,7 @@ jobs:
         source ~/.bash_profile
         cd v8
         tools/dev/v8gen.py x64.release
-        ninja -j 10 -C out.gn/x64.release d8
+        ninja -j 5 -C out.gn/x64.release d8
         ls -al out.gn
         ls -al out
         

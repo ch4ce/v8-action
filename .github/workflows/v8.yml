@@ -8,7 +8,7 @@ name: BUILD v8
 
 on:
   push:
-    branches: [ master ]
+    branches: [ ch4ce-patch-2 ]
   # watch:
   #   types: started
 
